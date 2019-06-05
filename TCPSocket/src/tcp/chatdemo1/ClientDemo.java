@@ -30,7 +30,7 @@ public class ClientDemo {
     public static void main(String[] args) throws IOException {
 
         //创建tcp客户端的socket服务，使用的是socket对象，并明确要连接的目的地
-        Socket socket = new Socket("172.22.197.244",10002);
+        Socket socket = new Socket("172.22.197.244", 10002);
 
         //获取socket流中的输出流
         OutputStream outputStream = socket.getOutputStream();
@@ -45,7 +45,7 @@ public class ClientDemo {
         InputStream inputStream = socket.getInputStream();
         byte[] bytes = new byte[1024];
         int len = inputStream.read(bytes);
-        String data1 = new String(bytes,0,len);
+        String data1 = new String(bytes, 0, len);
         System.out.println(data1);
 
         //关闭资源，断开连接

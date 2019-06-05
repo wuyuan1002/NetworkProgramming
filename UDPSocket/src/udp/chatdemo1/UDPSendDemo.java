@@ -30,7 +30,7 @@ public class UDPSendDemo {
         String data = "udp传输演示，哥们来啦！！！";
         byte[] da = data.getBytes();
         DatagramPacket packet = new DatagramPacket(da, da.length,
-                                 InetAddress.getByName("172.22.192.229"), 10000);
+                InetAddress.getByName("172.22.192.229"), 10000);
 
         //通过UDP的Socket服务把数据包发送出去
         udpsocket.send(packet);
