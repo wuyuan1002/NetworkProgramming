@@ -17,28 +17,28 @@ import java.net.Socket;
  */
 public class TextClientDemo implements Runnable {
     private Socket socket;
-
+    
     public TextClientDemo(Socket socket) {
         this.socket = socket;
     }
-
+    
     @Override
     public void run() {
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            byte[] bytes = new byte[1024];
-            int len;
-            String data;
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        byte[] bytes = new byte[1024];
+        int len;
+        String data;
         try {
             OutputStream outputStream = this.socket.getOutputStream();
             InputStream inputStream = this.socket.getInputStream();
-            while ((data = in.readLine()) != null){
+            while ((data = in.readLine()) != null) {
                 outputStream.write(data.getBytes());
                 if ("over".equals(data)) {
                     System.out.println("--------------------客户端结束-----------------------");
                     break;
                 }
                 len = inputStream.read(bytes);
-                String da = new String(bytes,0,len);
+                String da = new String(bytes, 0, len);
                 System.out.println(da);
             }
             //如果读取结束，告诉服务器端结束了，避免阻塞式方法缺少结束标记
